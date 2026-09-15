@@ -1,10 +1,8 @@
 # Limpieza de Datos - Proyecto de Ciencia de Datos y Machine Learning
 
-Proyecto correspondiente al primer avance de la materia **Ciencia de Datos y Machine Learning** de la Universidad Mayor de San Simón. El trabajo implementa un proceso reproducible de diagnóstico, limpieza, validación y exportación de dos conjuntos de datos: uno de Recursos Humanos y otro de calidad de vino tinto.
+Proyecto correspondiente a la materia **Ciencia de Datos y Machine Learning** de la Universidad Mayor de San Simón. El trabajo implementa un proceso reproducible de diagnóstico, limpieza, validación y exportación de dos conjuntos de datos, asi como modelos de aprendizaje, aplicados a dataset de Recursos Humanos y otro de calidad de vino tinto.
 
-## Objetivo
-
-Aplicar los tres procesos de limpieza solicitados en la materia —incompletitud, ruido e inconsistencias— de acuerdo con las características de cada dataset, registrando las acciones realizadas y generando archivos CSV preparados para las siguientes etapas del proyecto.
+## Primer avance: Limpieza de Datos
 
 ## Datasets utilizados
 
@@ -48,6 +46,18 @@ El proceso de limpieza incluye:
 - **Incompletitud:** detección de valores faltantes y tratamiento condicional mediante KNN cuando sea necesario.
 - **Ruido:** tratamiento de valores extremos mediante winsorización y eliminación de registros duplicados.
 
+## Segundo avance: modelos de aprendizaje
+
+Los modelos utilizan los datasets limpios del primer avance. El preprocesamiento se integra mediante `Pipeline` y `ColumnTransformer`, con imputación de valores faltantes, codificación de variables categóricas y estandarización cuando corresponde. Los datos se dividen en 80 % para entrenamiento y 20 % para prueba, manteniendo la distribución de la variable objetivo.
+
+### Recursos Humanos
+
+La variable objetivo es `Termd` (`0`: empleado activo, `1`: empleado desvinculado). Se implementan Árbol de Decisión CART, Random Forest, Regresión Logística y SVM con kernel RBF. Los modelos se evalúan con exactitud, precisión, sensibilidad, F1-score, ROC-AUC, reporte de clasificación y matriz de confusión. También se analizan la importancia de las variables, los coeficientes de la regresión logística y los vectores de soporte.
+
+### Calidad de vinos
+
+Para el análisis por clasificación, la calidad se agrupa en las categorías **Bajo**, **Medio** y **Alto**, aplicando CART, Random Forest y Gradient Boosting con validación cruzada y búsqueda de hiperparámetros. También se implementa Regresión Logística para diferenciar vinos de calidad baja/estándar y alta, además de SVR con kernel RBF para predecir el puntaje de calidad. La evaluación incluye métricas de clasificación y regresión, matrices de confusión y comparaciones entre modelos.
+
 ## Tecnologías utilizadas
 
 - Python 3.
@@ -55,6 +65,9 @@ El proceso de limpieza incluye:
 - pandas.
 - NumPy.
 - scikit-learn (`KNNImputer`).
+- scikit-learn (`Pipeline`, `ColumnTransformer`, preprocesamiento, modelos, métricas y validación).
+- Matplotlib y Seaborn.
+- IPython.
 - pathlib y subprocess.
 - Git y GitHub.
 
@@ -80,6 +93,9 @@ Proyecto-C.DatosMachineLearning-1erParcial/
 4. Los datasets originales se cargarán desde `datasets/originales/`.
 5. Se mostrarán los diagnósticos, las tablas de acciones y una comparación entre los datos originales y finales.
 6. Los archivos limpios se guardarán en `datasets/limpieza/` y se descargarán automáticamente.
+7. Ejecutar las celdas del segundo avance después de completar la limpieza.
+8. Se prepararán los datos, se entrenarán los modelos y se mostrarán sus métricas y visualizaciones.
+9. Las tablas comparativas permitirán contrastar el rendimiento de los modelos implementados.
 
 Los CSV se exportan con separador de punto y coma (`;`) y codificación `UTF-8 con BOM`, para facilitar su apertura en Excel configurado en español.
 
@@ -92,7 +108,7 @@ Además, durante la ejecución se muestra una tabla de auditoría con el método
 
 ## Alcance actual
 
-Esta versión corresponde únicamente al primer avance de limpieza de datos. Todavía no incluye la división en datos de entrenamiento y prueba, el entrenamiento de modelos regresionales o de árboles de decisión, ni la evaluación de su rendimiento.
+La versión actual incluye la limpieza de los dos datasets y la implementación del segundo avance de modelos de aprendizaje. Comprende la división de datos, el preprocesamiento, el entrenamiento, la evaluación y la comparación de modelos de árboles, regresión y máquinas de vectores de soporte.
 
 ## Integrantes
 
